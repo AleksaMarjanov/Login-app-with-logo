@@ -1,20 +1,48 @@
-import React from "react";
+import React, {useState} from "react";
 
 
+function Form() {
 
-function Form(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [headingText, setHeadingText] = useState('Log In')
+
+  function handleChange(e) {
+    setUsername(e.target.value)
+  }
+
+  function handlePwChange(e) {
+    setPassword(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    setHeadingText('Hello, ' + username);
+    e.preventDefault();
+    setUsername("");
+    setPassword("");
+    
+  }
+
+
   return (
-  <div>
-    <h1>Log In</h1>
-    <form className="form">
-      <input required type="text" placeholder="Username" />
-      <input required type="password" placeholder="Password" />
-      {!props.isRegistered && <input required type="password" placeholder="Confirm Password" />}
-      <button type="submit">
-        {props.isRegistered ? "Login" : "Register"}
-      </button>
-    </form>
-  </div>
+  <form className="form" onSubmit={handleSubmit}>
+    <h1>{headingText}</h1>
+      <input 
+      required 
+      onChange={handleChange}
+      type="text"
+      placeholder="Username" 
+      value={username}
+      />
+      <input 
+      required 
+      onChange={handlePwChange}
+      type="password" 
+      placeholder="Password"
+      value={password}
+      />
+      <button type='submit'>Login</button>
+  </form>
   );
 }
 
