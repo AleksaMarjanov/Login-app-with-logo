@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 
-
 function Form() {
 
   const [username, setUsername] = useState('');
@@ -24,24 +23,27 @@ function Form() {
   }
 
   return (
-  <form className="form" onSubmit={handleSubmit}>
-    <h1>{headingText}</h1>
-      <input 
-      required 
-      onChange={handleChange}
-      type="text"
-      placeholder="Username" 
-      value={username}
-      />
-      <input 
-      required 
-      onChange={handlePwChange}
-      type="password" 
-      placeholder="Password"
-      value={password}
-      />
-      <button type='submit'>Login</button>
-  </form>
+  <div>
+      <h1>{headingText}</h1>
+    <form className="form" onSubmit={handleSubmit}>
+      
+        <input 
+        required 
+        onChange={handleChange}
+        type="text"
+        placeholder="Username" 
+        value={username}
+        />
+        <input 
+        required 
+        onChange={handlePwChange}
+        type="password" 
+        placeholder="Password"
+        value={password}
+        />
+        <button type='submit'>Login</button>
+    </form>
+  </div>
   );
 }
 
